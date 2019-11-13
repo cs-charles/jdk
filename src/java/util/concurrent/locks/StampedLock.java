@@ -881,15 +881,18 @@ public class StampedLock implements java.io.Serializable {
 
     final class ReadLockView implements Lock {
         public void lock() { readLock(); }
+        @Override
         public void lockInterruptibly() throws InterruptedException {
             readLockInterruptibly();
         }
+        @Override
         public boolean tryLock() { return tryReadLock() != 0L; }
         public boolean tryLock(long time, TimeUnit unit)
             throws InterruptedException {
             return tryReadLock(time, unit) != 0L;
         }
         public void unlock() { unstampedUnlockRead(); }
+        @Override
         public Condition newCondition() {
             throw new UnsupportedOperationException();
         }
@@ -897,15 +900,18 @@ public class StampedLock implements java.io.Serializable {
 
     final class WriteLockView implements Lock {
         public void lock() { writeLock(); }
+        @Override
         public void lockInterruptibly() throws InterruptedException {
             writeLockInterruptibly();
         }
+        @Override
         public boolean tryLock() { return tryWriteLock() != 0L; }
         public boolean tryLock(long time, TimeUnit unit)
             throws InterruptedException {
             return tryWriteLock(time, unit) != 0L;
         }
         public void unlock() { unstampedUnlockWrite(); }
+        @Override
         public Condition newCondition() {
             throw new UnsupportedOperationException();
         }

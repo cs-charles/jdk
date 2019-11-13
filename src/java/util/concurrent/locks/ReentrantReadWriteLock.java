@@ -768,6 +768,7 @@ public class ReentrantReadWriteLock
          *
          * @throws InterruptedException if the current thread is interrupted
          */
+        @Override
         public void lockInterruptibly() throws InterruptedException {
             sync.acquireSharedInterruptibly(1);
         }
@@ -795,6 +796,7 @@ public class ReentrantReadWriteLock
          *
          * @return {@code true} if the read lock was acquired
          */
+        @Override
         public boolean tryLock() {
             return sync.tryReadLock();
         }
@@ -887,6 +889,7 @@ public class ReentrantReadWriteLock
          *
          * @throws UnsupportedOperationException always
          */
+        @Override
         public Condition newCondition() {
             throw new UnsupportedOperationException();
         }
@@ -994,6 +997,7 @@ public class ReentrantReadWriteLock
          *
          * @throws InterruptedException if the current thread is interrupted
          */
+        @Override
         public void lockInterruptibly() throws InterruptedException {
             sync.acquireInterruptibly(1);
         }
@@ -1027,6 +1031,7 @@ public class ReentrantReadWriteLock
          * by the current thread, or the write lock was already held
          * by the current thread; and {@code false} otherwise.
          */
+        @Override
         public boolean tryLock( ) {
             return sync.tryWriteLock();
         }
@@ -1174,6 +1179,7 @@ public class ReentrantReadWriteLock
          *
          * @return the Condition object
          */
+        @Override
         public Condition newCondition() {
             return sync.newCondition();
         }
